@@ -4,7 +4,6 @@ agate-excel==0.2.3
 agate-sql==0.5.4
 alembic
 appdirs==1.4.4
-apturl
 asgiref==3.2.10
 asn1crypto==0.24.0
 astroid==2.4.1
