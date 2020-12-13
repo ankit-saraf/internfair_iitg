@@ -83,15 +83,9 @@ soupsieve==2.0.1
 SQLAlchemy==1.3.16
 sqlparse==0.3.1
 sshtunnel==0.1.4
-usb-creator==0.3.3
 virtualenv==20.0.23
-wadllib==1.3.2
-Werkzeug==1.0.1
 whitenoise==5.2.0
 Whoosh==2.7.4
 wrapt==1.12.1
 WTForms==2.3.1
-xkit==0.0.0
-xlrd==1.2.0
-zipp==3.1.0
-zope.interface==4.3.2
+
