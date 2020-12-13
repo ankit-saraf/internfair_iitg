@@ -2,7 +2,7 @@ agate==1.6.1
 agate-dbf==0.2.1
 agate-excel==0.2.3
 agate-sql==0.5.4
-alembic==0.9.3.dev0
+alembic
 appdirs==1.4.4
 apturl==0.5.2
 asgiref==3.2.10
