@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    
+    <title>Intern Fair</title>
+    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+</head>
+<body>
+    <div class="main">
+        <div class="row align-items-center" style="height: 90vh;">
+            <div class="col-12 text-center">
+                <a href="{% url 'recruiter:RecruiterLanding' %}">
+                    <button>
+                        I am a recruiter
+                    </button>
+                </a><br>
+                <span>or</span><br>
+                <a href="{% url 'student'%}">
+                    <button>
+                        I am a student
+                    </button>
+                </a>
+                
+
+            </div>
+        </div>
+        <div class="bottom" style="height: 10vh;">
+            <div class="col-12 text-center" style="font-size: 24px;">
+                Intern Fair
+            </div>
+        </div>    
+    </div>
+
+
+      
+             
+            
+
+      
+</body>
+</html>

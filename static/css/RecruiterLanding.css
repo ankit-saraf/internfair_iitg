@@ -20,6 +20,10 @@ a:hover {
     cursor: pointer;
 }
 
+input:focus{
+    outline: none !important;
+}
+
 .brand {
     font-family: GT Walsheim Pro;
     font-style: normal;

@@ -6,6 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('student', views.student, name='student'),
 
     path('student/register', views.StudentRegistration.as_view(), name='StudentRegistration'),
     path('student/profile', views.StudentProfile, name='StudentProfile'),

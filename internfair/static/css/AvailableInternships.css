@@ -37,6 +37,9 @@ body {
 .navbar-light .navbar-nav .active {
   color: #416EA8;
 }
+input:focus{
+  outline: none !important;
+}
 
 div a,
 div a:after,

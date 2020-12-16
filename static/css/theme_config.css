@@ -20,6 +20,11 @@
     margin-right: 5% !important;
     width: 90% !important;
 }
+
+input:focus{
+    outline: none !important;
+}
+
 .question{
     font-style: normal !important;
     font-weight: normal !important;

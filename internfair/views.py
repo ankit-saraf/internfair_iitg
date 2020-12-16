@@ -14,8 +14,15 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
+    return render(request, "home.html")
+
+
+def student(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': request.user.id}))
+        if request.user.is_student:
+            return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': request.user.id}))
+        else:
+            return render(request, "StudentLanding.html")
     else:
         return render(request, "StudentLanding.html")
 
@@ -89,7 +96,7 @@ def studentLogin(request):
             return render(request, "StudentLanding.html",{'error':'Invalid login details entered.'})
             # return redirect('/', {'error':'Invalid login details given, If you are a recruiter, login at recruiter page.'})
     else:
-        return redirect('/')
+        return redirect('/student')
 
 def startupLogin(request):
     if request.method == 'POST':
@@ -175,7 +182,7 @@ def EditStudProfile(request, **kwargs):
 @login_required
 def logout_view(request):
     logout(request)
-    return redirect( 'index')
+    return redirect( 'student')
 
 @login_required
 def delete_app(request,**kwargs):

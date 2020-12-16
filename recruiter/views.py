@@ -13,7 +13,11 @@ from .models import *
 
 def RecruiterLanding(request):
     if request.user.is_authenticated:
-        return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
+        if request.user.is_startup:
+            return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
+        else:
+            template = "recruiter/RecruiterLanding.html"
+            return render(request,template)
     else:
         template = "recruiter/RecruiterLanding.html"
         return render(request,template)
