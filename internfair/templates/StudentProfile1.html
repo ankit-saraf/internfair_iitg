@@ -29,13 +29,13 @@
       <div class="col collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav m-0 d-flex justify-content-around" style="width: 100%;">
           <li class="nav-item active">
-            <a class="nav-link current-page" href="#">Dashboard<span class="sr-only">(current)</span></a>
+            <a class="nav-link activo activa hov" href="#">Dashboard</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'AvailableInternships' %}">Available Internship </a>
+            <a class="nav-link hov" href="{% url 'AvailableInternships' %}">Available Internship </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="mailto:internfair@udgam-iitg.ac.in" title="Send us Mail with any of your Query, We will respond you, at our earliest." >Contact Us</a>
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href=" {% url 'StudentLogout' %}" style="color: #416EA8;">Log Out</a>
@@ -91,20 +91,15 @@
     <div class="editProfileModal " id="editProfileModal">
       <div class="Editcard ">
         <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <h4 class="prof"> Edit Profile </h4>
-
-  <div class="profile-img-card"><svg data-jdenticon-value="user{{student.id}}" width="80" height="80"></svg></div>
-<!--        <img id="profile-img" class="profile-img-card" src="{% static 'image/test_image_ecell.jpg' %}" />-->
-        <div class="col-md-12 text-center">
-          <button class="uploadbtn" onclick="document.getElementById('getFile').click()"
-            style="width: fit-content;">Upload/Change Your Photo</button>
-          <input type='file' id="getFile" style="display:none">
+        <div class='text-center'>
+          <h4 class="prof"> Edit Profile </h4>
         </div>
-        <span class="full" style="text-align: center; padding-top: 5px;">
-          <a href="#">
-            JPG or PNG. Max size 800KB. <br>
-          </a>
-        </span>
+        
+        <div class='text-center'>
+            <div class="profile-img-card"><svg data-jdenticon-value="user{{student.id}}" width="80" height="80"></svg></div>
+
+        </div>
+<!--        <img id="profile-img" class="profile-img-card" src="{% static 'image/test_image_ecell.jpg' %}" />-->
 
         <p id="profile-name" class="profile-name-card"></p>
         <form class="form-signin" method='POST' action="{% url 'editStudentProfile' student.id %}">
@@ -198,7 +193,9 @@
        <div class="col-3 col-md-auto  padding pt-2 mx-3 m-md-0">
 <!--          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEVBaeG1ENgtAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC"-->
 <!--            class="img-fluid">-->
-            <svg width="25" height="25" data-jdenticon-value="user{{intern.id}}"></svg>
+                    <img width="25" height="25" src="{{intern.Internship.startup.logo.url}}"></img>
+
+            
 
 <!--          <img class="img-fluid" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="loading...">-->
         </div>
@@ -218,7 +215,7 @@
         <div class="summaryCard" style="margin:auto;">
             <div class="row">
                 <div class="col-3">
-                     <svg width="80" height="80" data-jdenticon-value="user{{intern.id}}"></svg>
+                      <img width="80" height="80" src="{{intern.Internship.startup.logo.url}}"></img>
                 </div>
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
@@ -247,6 +244,11 @@
                     <small>STIPEND</small><br>
                     <span class="info">{{ intern.Internship.stipend}}</span>
                 </div>
+                <div class="col-6 text-left entry">
+                    <small>STATUS</small><br>
+                    <span class="info">{{ intern.Status}}</span>
+                </div>
+
 
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom:30px">
@@ -264,7 +266,7 @@
             <div class=" col-12 col-sm-8 col-xl-6 bg-light d-flex justify-content-center"
               style="border-radius: 1rem !important">
               <div class="col-12 col-md-10 col-lg-9 col-xl-8 card-body text-center card-text">
-               <svg width="50" height="50" data-jdenticon-value="user{{intern.id}}"></svg>
+                <img width="50" height="50" src="{{intern.Internship.startup.logo.url}}"></img>
                 <p class="m-0">Are you sure that you want to cancel your application for internship in</p>
                 <p id="company">{{ intern.Internship.startup }}</p>
                 <a href="{% url 'delete_app' intern.id %}" class="btn btn-custom py-1 px-3" onclick="cancelApplication({{intern.id}})">Yes</a>

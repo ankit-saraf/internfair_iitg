@@ -24,7 +24,7 @@ class StartUps(models.Model):
     email = models.EmailField(max_length=150)
     companyName = models.CharField(max_length=100, default="")
     contact = models.CharField(default="",max_length=10)
-    logo = models.ImageField(upload_to=user_directory_path1,blank=True)
+    logo = models.ImageField(upload_to='startupLogo',default='./startupLogo/default.png')
     description = models.CharField(max_length=500, default="Edit Profile to add description")
     location = models.CharField(max_length=100, default="Edit profile to add location")
 

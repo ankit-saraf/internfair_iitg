@@ -12,8 +12,15 @@ from .models import *
 
 
 def RecruiterLanding(request):
-    template = "recruiter/RecruiterLanding.html"
-    return render(request,template)
+    if request.user.is_authenticated:
+        if request.user.is_startup:
+            return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
+        else:
+            template = "recruiter/RecruiterLanding.html"
+            return render(request,template)
+    else:
+        template = "recruiter/RecruiterLanding.html"
+        return render(request,template)
 
 
 # def RecruiterRegistration(request):
@@ -73,7 +80,7 @@ def DeactivateForm(request,pk):
     current_user = request.user
     startup_object = StartUps.objects.get(user=current_user)
     form = Intern_form.objects.get(pk = id)
-    print(form)
+    # print(form)
     form.FormStatus = 'DEACTIVE'
     form.save()
     return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
@@ -83,6 +90,8 @@ def EditStartupProfile(request, **kwargs):
     current_user = request.user
     startup = StartUps.objects.get(user=current_user)
     if request.method=='POST':
+        if request.FILES['startup_logo']:
+            startup.logo = request.FILES['startup_logo']
         if request.POST['companyName']:
             startup.companyName = request.POST['companyName']
         if request.POST['description']:
@@ -100,17 +109,18 @@ def EditStartupProfile(request, **kwargs):
 def intern_form(request):
 
     if request.method == "POST":
-        print(request.POST)
+        # print(request.POST)
         startup = StartUps.objects.get(user=request.user)
         profile = request.POST["PROFILE"]
         stipend = request.POST["STIPEND"]
         allowances = request.POST["ALLOWANCE"]
         location = request.POST["LOCATION"]
-        questions =  f'{request.POST["Q1"]},{request.POST["Q2"]},{request.POST["Q3"]}'
+        remarks = request.POST["REMARKS"]
+        questions =  f'{request.POST["Q1"]}$${request.POST["Q2"]}$${request.POST["Q3"]}'
 
-        form = Intern_form.objects.create(startup = startup,profile=profile,stipend=stipend,allowances=allowances,location=location,questions=questions)
+        form = Intern_form.objects.create(startup = startup,profile=profile,stipend=stipend,allowances=allowances,location=location,questions=questions, remarks=remarks)
         form.save()
-        print(form)
+        # print(form)
         return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
 
 

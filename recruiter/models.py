@@ -14,7 +14,7 @@ class Intern_form(models.Model):
     remarks = models.CharField(max_length=200,default=".")
     def string_as_list(self):
         print(self.questions)
-        ques = self.questions.split(',')
+        ques = self.questions.split('$$')
         print(ques)
         for q in ques:
             if q == '':
@@ -24,7 +24,7 @@ class Intern_form(models.Model):
 
 
     def __str__(self):
-        return f'{self.startup}-{self.profile}'
+        return str(self.startup.user) + '-' +self.profile
 
     def Applicant_count(self):
         available = InternApplication.objects.filter(Internship__startup=self.startup).filter(Internship__profile=self.profile).filter(

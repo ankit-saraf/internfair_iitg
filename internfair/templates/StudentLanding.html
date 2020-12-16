@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    
-    <title>Home-Student</title>
+    <title>Student Login</title>
     <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/StudentLanding.css' %}">
@@ -24,7 +24,7 @@
                 <a href="#" class="nav-menu" style="margin-right: 8vw;">Home</a>
             </li>
             <li class="menu-item">
-                <a href="mailto:internfair@udgam-iitg.ac.in" title="Send us Mail with any of your Query, We will respond you, at our earliest."class="nav-menu">Contact Us</a>
+                <a href="{% url 'contact' %}" class="nav-menu">Contact Us</a>
             </li>
           </ul>
           <a href="{% url 'StudentRegistration' %}"><button class="RegisterBtn">Register</button></a>
@@ -61,7 +61,7 @@
                             <span class="recruiter"><a href="{% url 'StudentRegistration' %}">Don’t have an account?</a></span>
                         </div>
                         <div class="col-6 text-right">
-                            <a class="recruiter" href="mailto:internfair@udgam-iitg.ac.in?subject=Send Me Password " title="Please Send a Mail with your Email id and Username, You will get it on mail">Forgot Password?</a>
+                            <a class="recruiter" href="mailto:internfair@udgam-iitg.in?subject=Send Me Password " title="Please Send a Mail with your Email id and Username, You will get it on mail">Forgot Password?</a>
                         </div>
                     </div>
                     

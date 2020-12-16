@@ -1,8 +1,12 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 from django.shortcuts import  render
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('', views.index, name='index'),
+    path('student', views.student, name='student'),
 
     path('student/register', views.StudentRegistration.as_view(), name='StudentRegistration'),
     path('student/profile', views.StudentProfile, name='StudentProfile'),
@@ -14,4 +18,5 @@ urlpatterns = [
     path('student/availableInternships', views.AvailableInternships, name='AvailableInternships'),
     path('student/login', views.studentLogin, name='StudentLogin'),
     path('student/logout', views.logout_view, name='StudentLogout'),
-]
+    path('contact/', views.contact, name='contact'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

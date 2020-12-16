@@ -1,6 +1,8 @@
 from django.urls import include, path,re_path
 from . import views
 from internfair import views as stViews
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = 'recruiter'
 
@@ -19,4 +21,4 @@ urlpatterns = [
     path('login',stViews.startupLogin, name='StartupLogin'),
     path('logout',views.logout_view, name='StartupLogout'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
