@@ -14,7 +14,13 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    return render(request, "StudentLanding.html")
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': request.user.id}))
+    else:
+        return render(request, "StudentLanding.html")
+
+def contact(request):
+    return render(request, "contact.html")
 
 class StudentRegistration(CreateView):
     model = User
@@ -26,8 +32,8 @@ class StudentRegistration(CreateView):
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):
-        givenemail = str(form.cleaned_data.get('email'))
-        print(givenemail)
+        givenemail = str(form.cleaned_data.get('IITG_webmail'))
+        # print(givenemail)
         iitgmail = "iitg.ac.in"
         if iitgmail in givenemail :
             user = form.save()
@@ -59,11 +65,12 @@ def StudentProfile(request,**kwargs):
 
     user = Students.objects.get(user=request.user)
     registered_internships = InternApplication.objects.filter(Intern__id = user.pk)
-    print(registered_internships)
+    # print(registered_internships)
     return render(request, "StudentProfile1.html",{'student':user,'interns':registered_internships})
 
 
 def studentLogin(request):
+
     if request.method == 'POST':
         username = request.POST.get('Username')
         password = request.POST.get('Password')
@@ -172,14 +179,16 @@ def logout_view(request):
 
 @login_required
 def delete_app(request,**kwargs):
-    print(kwargs)
+    # print(kwargs)
     id = kwargs['pk']
     student = Students.objects.get(user = request.user)
-    print(student)
+    # print(student)
     intern_app = InternApplication.objects.get(pk = id)
     intern_app.delete()
+    student.intern_count=student.intern_count-1
+    student.save()
 
-    print(intern_app)
+    # print(intern_app)
 
 
     return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': student.id}))
@@ -188,6 +197,6 @@ def delete_app(request,**kwargs):
 
 def intern_app_count(student):
     count = InternApplication.objects.filter(Intern__id= student.id).count()
-    print(count)
+    # print(count)
     return count
 

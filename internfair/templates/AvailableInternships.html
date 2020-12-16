@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/AvailableInternships.css' %}">
 
-  <title>Available internships</title>
+  <title>Available Internships</title>
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <a class="nav-link activo activa hov" href="#" style="color: #416EA8;">Available Internship</a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link hov" href="mailto:internfair@udgam-iitg.ac.in" title="Send us Mail with any of your Query, We will respond you, at our earliest.">Contact Us</a>
+            <a class="nav-link hov" href="{% url 'contact' %}" title="Send us Mail with any of your Query, We will respond you, at our earliest.">Contact Us</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link activa hov" href="{% url 'StudentLogout' %}" style="color: #416EA8;">Log Out</a>
@@ -47,7 +47,8 @@
 
 
     <hr class="line">
-   <div class="container-fluid">
+    <br><br>
+   <div class="container">
 
     <div class="row mb-3 justify-content-between">
 
@@ -64,13 +65,14 @@
               d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
           </svg>
         </button>
-        <input class="form-control form-control-dark w-50 w-lg-50" type="text" placeholder="Search"
+        <input class="form-control form-control-dark w-50 w-lg-50" type="text" id="mySearchTab" onkeyup="mySearch()" placeholder="Search"
           aria-label="Search">
 
       </div>
     </div>
+    <br>
 
-    <div class="little-center-table">
+    <div class="little-center-table" id="myTable">
 
       <!-- Table column heading -->
       <div class="row d-none d-md-flex" id="table-head">
@@ -92,33 +94,31 @@
 
       <!-- First row -->
       {% for intern in interns %}
-      <div class="row p-2 p-md-0 top" id="{{intern.id}}" onclick="openApplyModal({{intern.id}})">
+      <div class="row p-2 p-md-0 top internshipRow" id="{{intern.id}}" onclick="openApplyModal({{intern.id}})">
         <div class="col-3 col-md-auto  padding p-0 mx-3 m-md-0">
-<!--          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEVBaeG1ENgtAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC"-->
-<!--            class="img-fluid">-->
-<!--          <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="loading..." id="image">-->
-        <svg width="25" height="25" data-jdenticon-value="user{{intern.id}}"></svg>
+        <img width="25" height="25" src="{{intern.startup.logo.url}}"></img>
+        {% comment %} <svg width="25" height="25" data-jdenticon-value="user{{intern.id}}"></svg> {% endcomment %}
         </div>
         <div class="col-auto col-md p-0 px-md-3">
           <div class="row flex-column flex-md-row  justify-content-center " style="height: 100%;">
-            <div class="col-md-3 padding"> {{ intern.startup }}</div>
-            <div class="col-md-3 padding">{{ intern.profile }}</div>
-            <div class="col-md-3 padding">{{ intern.location }}</div>
-            <div class="col-md-3 padding">{{ intern.stipend }}</div>
+            <div class="col-md-3 padding td"> {{ intern.startup }}</div>
+            <div class="col-md-3 padding td">{{ intern.profile }}</div>
+            <div class="col-md-3 padding td">{{ intern.location }}</div>
+            <div class="col-md-3 padding td">{{ intern.stipend }}</div>
           </div>
         </div>
       </div>
 
-      {% comment %} Apply to compant modal {% endcomment %}
+      {% comment %} Apply to company modal {% endcomment %}
       <div class="applyToCompany" id="modal{{intern.id}}">
         <div class="applyCard" style="margin:auto;">
-            <div class="row">
-                <div class="col-3">
-                     <svg width="80" height="80" data-jdenticon-value="user{{intern.id}}"></svg>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                     <img width="80" height="80" src="{{intern.startup.logo.url}}"></img>
                 </div>
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
-                <div class="col-10 test-left c-name">
+                <div class="col-12 c-name">
                     {{ intern.startup }}
                 </div>
             </div>
@@ -143,6 +143,7 @@
                     <small>STIPEND</small><br>
                     <span class="info">{{ intern.stipend}}</span>
                 </div>
+          
 
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom:30px">
@@ -155,7 +156,7 @@
 
       <!-- Question Modal -->
       <div class="questionModal" id="qModal{{intern.id}}">
-        <div class="quesCard" style="margin:auto">
+        <div class="quesCard" style="margin:auto ; height:fit-content; top: 55%">
           <div style="padding: 5%;">
             <div style="text-align: center;">
               <span class="heading">Internship Form</span><br><br>
@@ -171,12 +172,13 @@
               <input type="hidden"  name = "startup"  value='{{ intern.startup }}'>
               <input type="hidden"  name = "profile"  value="{{ intern.profile }}">
               <input type="hidden"  name = "id"  value="{{ intern.id }}">
-              <span class="">CV (google drive link) </span>
-              <input type="text"  name = "CV" class="input">
+              <span class="">CV (Shareable Google Drive link) </span>
+              <input type="url" required  name = "CV" class="input"><br><br>
               {% for ques in intern.string_as_list  %}
+              {% if ques != "" %}
               <span class="">{{ ques }}</span>
-              <input type="text"  name = "answers" class="input">
-
+              <input type="text"  name = "answers" required class="input">
+              {% endif %}
               <br><br>
               {% endfor %}
 
@@ -203,6 +205,31 @@
 
 
   <script>
+    function mySearch(){
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("mySearchTab");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByClassName("internshipRow");
+      for (i = 0; i < tr.length; i++) {
+        var tds;
+        tds=tr[i].getElementsByClassName("td");
+        for (var j = 0; j < tds.length; j++){
+          td = tds[j];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = ""; 
+              break;
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+        
+      }
+    }
+
     function openApplyModal(i) {
       var modal = document.getElementById("modal" + i);
       modal.style.display = "block";

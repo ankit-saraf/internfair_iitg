@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'kfbcj)ilo6_ewd5n)yq^$6#g73=2v@#w!@&_s^jk47@3i3v5&&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 CORS_REPLACE_HTTPS_REFERER      = False
 HOST_SCHEME                     = "https://"
@@ -43,8 +43,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'internfair.apps.InternfairConfig',
     'recruiter.apps.RecruiterConfig',
+    'internfair.apps.InternfairConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,14 +137,17 @@ USE_TZ = True
 
 # All settings common to all environments
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "recruiter/static/recruiter"),
-#     os.path.join(BASE_DIR, "internfair/static/"),
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "recruiter/static/recruiter"),
+    os.path.join(BASE_DIR, "internfair/static/"),
 
-# ]
+]
 
 LOGIN_URL = '/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

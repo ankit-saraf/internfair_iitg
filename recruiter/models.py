@@ -14,7 +14,7 @@ class Intern_form(models.Model):
     remarks = models.CharField(max_length=200,default=".")
     def string_as_list(self):
         print(self.questions)
-        ques = self.questions.split(',')
+        ques = self.questions.split('$$')
         print(ques)
         for q in ques:
             if q == '':
