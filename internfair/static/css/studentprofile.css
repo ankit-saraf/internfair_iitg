@@ -68,15 +68,6 @@ body {
   border-top: 1px solid rgba(222,226,230, 1);
 }
 
-@font-face {
-    font-family: 'GT Walsheim Pro';
-    src: local('GT Walsheim Pro Medium'), local('GT-Walsheim-Pro-Medium'),
-        url('GTWalsheimPro-Medium.woff2') format('woff2'),
-        url('GTWalsheimPro-Medium.woff') format('woff'),
-        url('GTWalsheimPro-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
 
 a {
   color: #000000;
