@@ -46,6 +46,16 @@ button:hover{
     outline: 0 !important;
 }
 
+.footer {
+    bottom: 0 !important;
+    position: relative;
+    width: 100vw;
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    color: #000000 !important;
+}
+
 
 @media (max-width:420px) {
     button{

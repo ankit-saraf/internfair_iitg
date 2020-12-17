@@ -139,6 +139,18 @@ button:hover{
     font-family: GT Walsheim Pro ;
 }
 
+.footer {
+    bottom: 0 !important;
+    position: relative;
+    width: 100vw;
+    background-color: #FFFFFF;
+    border-top: 1px  #416EA8 solid;
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    color: #000000 !important;
+}
+
 
  @media (max-width: 1440px) and (min-width:985px){
     body{

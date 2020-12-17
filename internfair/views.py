@@ -16,6 +16,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, "home.html")
 
+def team(request):
+    return render(request, "team.html")
+
 
 def student(request):
     if request.user.is_authenticated:

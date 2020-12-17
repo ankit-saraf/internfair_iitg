@@ -162,6 +162,18 @@ ul {
     background-color: #FFD2D2;
 }
 
+.footer {
+    bottom: 0 !important;
+    position: relative;
+    width: 100vw;
+    background-color: #FFFFFF;
+    border-top: 1px  #416EA8 solid;
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    color: #000000 !important;
+}
+
 
 @media (max-width:1270px) and (min-width:751px) {
     .sideImg {
