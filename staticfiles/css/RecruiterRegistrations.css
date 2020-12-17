@@ -32,6 +32,7 @@ a:hover
     line-height: 18px;
     color: #484A52;
     overflow: hidden;
+    text-decoration: none !important;
 }
 ul{
     margin-left: auto;
