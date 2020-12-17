@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'GT Walsheim Pro';
     src: local('GT Walsheim Pro Medium'), local('GT-Walsheim-Pro-Medium'),
-        url('../font/GTWalsheimPro-Medium.woff2') format('woff2'),
-        url('../font/GTWalsheimPro-Medium.woff') format('woff'),
-        url('../font/GTWalsheimPro-Medium.ttf') format('truetype');
+        url("../font/GTWalsheimPro-Medium.6c3cfafbc74a.woff2") format('woff2'),
+        url("../font/GTWalsheimPro-Medium.86882f7d855e.woff") format('woff'),
+        url("../font/GTWalsheimPro-Medium.f2f36c73edf5.ttf") format('truetype');
     font-weight: 500;
     font-style: normal;
 }
