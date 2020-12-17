@@ -107,4 +107,21 @@ ul{
     font-family: GT Walsheim Pro ;
 }
 
-
+@media (max-width:991px){
+   
+    .form-group{
+        text-align: center;
+        margin: 0 !important;
+    }
+    .form-control{
+        width: 70vw !important;
+        margin: auto !important;
+        margin-bottom: 20px !important;
+    }
+    .menu-item{
+        margin-right: auto !important;
+        margin-bottom: 5px;
+        position: relative;
+        left: -26% !important;
+    }
+}

@@ -19,59 +19,50 @@ a:hover
       text-decoration:none;
       cursor:pointer;
  }
-.navbar-brand{
-    padding-left: 130px;
-    padding-top: 10px;
-    padding-bottom: 10px;   
+
+
+.brand {
+    font-family: GT Walsheim Pro;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 18px;
-    text-align: center; 
-    font-family: GT Walsheim Pro ;
+    color: #484A52;
 }
 
-.navigations{
+.nav-menu {
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color: #484A52;
+    overflow: hidden;
+}
+
+ul {
     margin-left: auto;
+    position: relative;
+    left: 22vw;
 }
 
-.collapse{
-    padding-left: 716px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-    color: #484A52;
-    font-family: GT Walsheim Pro ;
+.menu-item {
+    width: fit-content;
+    box-sizing: content-box;
 }
 
-
-.contact{
-    padding-left:96px;
-
-    margin-right: 0px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
-
-    color: #484A52;
-    padding-right: 96px;
-}
-
-.login{
-    padding: 8;
+.RegisterBtn {
+    width: 91px;
+    height: 34px;
+    background: #416EA8;
+    border-radius: 4px;
+    font-family: GT Walsheim Pro;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 18px;
     color: #FFFFFF;
-    font-family: GT Walsheim Pro ;
-
-}
-
-nav{
-    box-shadow: 0px 2px 8px rgba(72, 74, 82, 0.08);
+    border: none;
 }
 
 
@@ -155,42 +146,34 @@ button:hover{
     }
 }
 
+@media (max-width:990px) {
+
+    ul {
+        margin-left: 0 !important;
+        left: 0;
+    }
+
+    .menu-item {
+        margin-bottom: 2vh;
+    }
+    .heading{
+        font-size: 25px;
+    }
+    
+}
 
 @media (max-width:991px){
-    .contact {
-        margin-right: 0px;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 18px;
-        color: #484A52;
-        padding-right: 0px;
+   
+    .form-group{
+        text-align: center;
+        margin: 0 !important;
     }
-
-    .collapse{
-        padding-left: 0px;
-        padding-right: 90px;
+    .form-control{
+        width: 70vw !important;
+        margin: auto !important;
+        margin-bottom: 20px !important;
     }
-
-    .navbar-toggler{
-        padding-right: 0px;
-    }
-
-    .navbar-nav{
-        align-items: flex-end;
-    }
-
     .navbar-brand{
-        font-size: 2em;
-        padding-left: 69px;
-    }
-
-    .register{
-        padding-left: 69px;
-    }
-
-    .navbar-light .navbar-toggler{
-        padding-right: 13px;
-        margin-right: 90px;
+        font-size: 16px;
     }
 }
