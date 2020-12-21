@@ -148,7 +148,7 @@
 <!--    <ul class="messages">-->
         {% for message in messages %}
 <!--        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>-->
-         <div class="alert mx-auto alert-primary">{{ message }} </div>
+         <div class="alert mx-auto alert-success">{{ message }} </div>
 <!--        </li>-->
         {% endfor %}
 <!--        </ul>-->
@@ -170,6 +170,9 @@
     <br><br>
     {% else  %}
     <!-- If internships applied -->
+    <div class="col-md-5 pb-3  mx-5 pb-md-0 alert alert-primary" style="font-size: 1rem; width: fit-content; left:-50px">
+        Click on internship to view status.
+      </div>
     <div class="little-center-table">
 
       <!-- Table column heading -->
@@ -246,7 +249,11 @@
                 </div>
                 <div class="col-6 text-left entry">
                     <small>STATUS</small><br>
-                    <span class="info">{{ intern.Status}}</span>
+                    {%if intern.Status == "SHORTLISTED" %}
+                    <span class="info" style="color:green">{{ intern.Status}}</span>
+                    {%else%}
+                    <span class="info" style="color:red">{{ intern.Status}}</span>
+                    {% endif %}
                 </div>
 
 

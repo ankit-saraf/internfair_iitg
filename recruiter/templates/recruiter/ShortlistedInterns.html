@@ -67,20 +67,18 @@
               <svg data-jdenticon-value="user127{{intern.id }}" width="80" height="80"></svg>
               </div>
 
-
-              <p><h7 style="color:#416EA8!important;">DEPARTMENT</h7><br><b>{{ intern.Intern.department }}</b></p>
-              <p><h7 style="color:#416EA8!important;">ROLL NO.</h7><br><b>{{ intern.Intern.roll_number }}</b></p>
-              <p><h7 style="color:#416EA8!important;">EMAIL</h7><br><b>{{ intern.Intern.email }}</b></p>
-              <p><h7 style="color:#416EA8!important;">CONTACT</h7><br><b>{{ intern.Intern.contact }}</b></p>
-
+              <p><h7 style="color:#416EA8!important;">DEPARTMENT</h7><br>{{ intern.Intern.department }}</p>
+              <p><h7 style="color:#416EA8!important;">ROLL NO.</h7><br>{{ intern.Intern.roll_number }}</p>
+              <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }} " style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
+              <p><h7 style="color:#416EA8!important;">NOTE</h7><br>Contact details will be sent to you through email.</p>              
 
           </div>
-        </div>
+        </div> 
       </div>
      </div>
     {% endif %}
     {% endfor %}
-
+    <br><br>
 
 {% endblock %}
 
