@@ -5,13 +5,13 @@ from internfair.models import *
 class Intern_form(models.Model):
     startup = models.ForeignKey(StartUps, on_delete=models.CASCADE, related_name='intern_details')
     profile = models.CharField(max_length=50,blank=True)
-    stipend = models.IntegerField(blank=True)
+    stipend = models.CharField(blank=True, default="N/A")
     location = models.CharField(max_length=50,blank=True)
-    allowances = models.CharField(max_length=150,blank=True)
+    allowances = models.CharField(max_length=150,blank=True, default="N/A")
     questions = models.TextField(max_length=200)
     status = { ('ACTIVE','ACTIVE'),('DEACTIVE','DEACTIVE')}
     FormStatus = models.CharField(max_length=10,choices=status,default='ACTIVE')
-    remarks = models.CharField(max_length=200,default=".")
+    remarks = models.CharField(max_length=200,default="N/A")
     def string_as_list(self):
         print(self.questions)
         ques = self.questions.split('$$')
