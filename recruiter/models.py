@@ -30,6 +30,9 @@ class Intern_form(models.Model):
         available = InternApplication.objects.filter(Internship__startup=self.startup).filter(Internship__profile=self.profile).filter(
             Status="PENDING").count()
         return available
+    def Total_count(self):
+        available = InternApplication.objects.filter(Internship__startup=self.startup).filter(Internship__profile=self.profile).count()
+        return available
     def Shortlisted_count(self):
         shortlisted = InternApplication.objects.filter(Internship__startup=self.startup).filter(Internship__profile=self.profile).filter(
             Status="SHORTLISTED").count()
