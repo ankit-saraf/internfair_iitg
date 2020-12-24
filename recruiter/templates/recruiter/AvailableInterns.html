@@ -13,6 +13,13 @@
 <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async></script>
 
   <div class="row mb-3 justify-content-between">
+  <div class="col-md-12 col-lg-7 pb-3  mx-5 pb-md-0 alert alert-primary" style="font-size: 1rem; left:-30px">
+        <b>NOTE:</b>
+        <ul>
+          <li>Summer break of first yearites: 5 weeks (From June 3rd week)</li>
+          <li>Summer break of second yearites: 3 months (From May)</li>          
+        </ul>
+      </div>
     <div class="col-md-8 pb-4 ml-sm-5 pb-md-0 highlight">
       <a  href="#" >Available Interns |</a>
       <a class=" light-text"   href="{% url 'recruiter:shortlistedInterns' %}" >Shortlisted Interns</a>
@@ -109,6 +116,12 @@
 
               <p><h7 style="color:#416EA8!important;">DEPARTMENT</h7><br>{{ intern.Intern.department }}</p>
               <p><h7 style="color:#416EA8!important;">ROLL NO.</h7><br>{{ intern.Intern.roll_number }}</p>
+
+              {% if intern.Intern.roll_number|slice:":2" == "20" %}
+                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>First</p>
+              {% elif  intern.Intern.roll_number|slice:":2" == "19" %}
+                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Second</p>
+              {% endif %}
               <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }} " style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
 
             <div class="pb-3 mx-2 ">

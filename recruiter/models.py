@@ -5,7 +5,7 @@ from internfair.models import *
 class Intern_form(models.Model):
     startup = models.ForeignKey(StartUps, on_delete=models.CASCADE, related_name='intern_details')
     profile = models.CharField(max_length=50,blank=True)
-    stipend = models.CharField(blank=True, default="N/A")
+    stipend = models.CharField(blank=True,max_length=10, default="N/A")
     location = models.CharField(max_length=50,blank=True)
     allowances = models.CharField(max_length=150,blank=True, default="N/A")
     questions = models.TextField(max_length=200)
