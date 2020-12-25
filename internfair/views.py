@@ -143,7 +143,9 @@ def AvailableInternships(request):
         if app_count < 5  :
             student.intern_count = app_count + 1
             student.save()
-            app = InternApplication.objects.create(Intern=student,Internship = internship, Answers=answers,CV = CV)
+            app = InternApplication.objects.create(Intern=student,Internship = internship, Intern_name= student.name,
+            Intern_email= student.email, Intern_contact= student.contact, Startup_name = internship.startup.companyName,
+            Startup_profile= internship.profile, Answers=answers,CV = CV)
             # app = [student.name,startup,profile,internship,answers]
             messages.success(request, f'You have successfully applied for internship in {startup} for  {profile} profile  ', '')
         else:

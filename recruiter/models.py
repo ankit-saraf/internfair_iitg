@@ -42,6 +42,11 @@ class Intern_form(models.Model):
 class InternApplication(models.Model):
     status = { ('PENDING','pending'),('SHORTLISTED','shortlisted'),('REJECTED','rejected')}
     Intern = models.ForeignKey(Students,on_delete=models.CASCADE)
+    Intern_name = models.CharField(max_length=100,default="not submitted")
+    Intern_email = models.CharField(max_length=100,default="not submitted")
+    Intern_contact = models.CharField(max_length=100,default="not submitted")
+    Startup_name = models.CharField(max_length=100,default="not submitted")
+    Startup_profile = models.CharField(max_length=100,default="not submitted")
     Internship = models.ForeignKey(Intern_form,on_delete = models.CASCADE)
     Status = models.CharField(max_length=20,choices=status,default='PENDING')
     Answers = models.TextField(max_length=400)
