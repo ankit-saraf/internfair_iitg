@@ -4,11 +4,11 @@ from internfair.models import *
 
 class Intern_form(models.Model):
     startup = models.ForeignKey(StartUps, on_delete=models.CASCADE, related_name='intern_details')
-    profile = models.CharField(max_length=50,blank=True)
-    stipend = models.CharField(blank=True,max_length=10, default="N/A")
-    location = models.CharField(max_length=50,blank=True)
+    profile = models.CharField(max_length=100,blank=True)
+    stipend = models.CharField(blank=True,max_length=100, default="N/A")
+    location = models.CharField(max_length=100,blank=True)
     allowances = models.CharField(max_length=150,blank=True, default="N/A")
-    questions = models.TextField(max_length=200)
+    questions = models.TextField(max_length=500)
     status = { ('ACTIVE','ACTIVE'),('DEACTIVE','DEACTIVE')}
     FormStatus = models.CharField(max_length=10,choices=status,default='ACTIVE')
     remarks = models.CharField(max_length=200,default="N/A")

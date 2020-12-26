@@ -156,7 +156,7 @@ def AvailableInternships(request):
 
 
     else:
-        available_internships = Intern_form.objects.all()
+        available_internships = Intern_form.objects.all().order_by('profile')
 
         template = "AvailableInternships.html"
         context = {'interns': available_internships}

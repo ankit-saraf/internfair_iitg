@@ -109,7 +109,7 @@
                 </div>
                     <label for="question1" class="question" >COMPANY NAME</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" name='companyName' value='{{startup.companyName}}' id="question1" >
+                        <input type="text" maxlength='100' class="form-control" name='companyName' value='{{startup.companyName}}' id="question1" >
                     </div>
                     <label for="question2" class="question">COMPANY DESCRIPTION</label>
                     <div class="form-group">
@@ -117,7 +117,7 @@
                     </div>
                     <label for="question3" class="question">COMPANY LOCATION</label>
                     <div class="form-group">
-                        <input type="text" name='location' value='{{startup.location}}' class="form-control" id="question3" >
+                        <input type="text" name='location' maxlength='100' value='{{startup.location}}' class="form-control" id="question3" >
                     </div>
                 <div class=" text-center" style='padding-bottom:15px'>
                     <button type="submit" class="btn btn-primary"  >Save Changes</button>

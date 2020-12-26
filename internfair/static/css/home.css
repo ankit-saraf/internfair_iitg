@@ -65,4 +65,7 @@ button:hover{
         width: 260px;
         height: 55px;
     }
+    .footer-font{
+        font-size: 13px !important;
+    }
 }

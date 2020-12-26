@@ -90,7 +90,8 @@ def EditStartupProfile(request, **kwargs):
     current_user = request.user
     startup = StartUps.objects.get(user=current_user)
     if request.method=='POST':
-        if request.FILES['startup_logo']:
+      
+        if len(request.FILES) != 0:
             startup.logo = request.FILES['startup_logo']
         if request.POST['companyName']:
             startup.companyName = request.POST['companyName']
