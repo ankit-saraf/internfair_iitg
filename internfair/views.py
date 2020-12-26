@@ -157,8 +157,15 @@ def AvailableInternships(request):
 
     else:
         available_internships = Intern_form.objects.filter(FormStatus="ACTIVE").order_by('profile')
+        startupName = []
+
+        for x in available_internships:
+            y= x.startup.companyName
+            if y not in startupName:
+                startupName.append(y)
+        
         template = "AvailableInternships.html"
-        context = {'interns': available_internships}
+        context = {'interns': available_internships, 'startupName': startupName}
         return render(request, template, context)
 
 

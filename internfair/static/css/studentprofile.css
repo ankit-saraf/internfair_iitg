@@ -526,6 +526,9 @@ small{
   .c-name{
     font-size: 20px;
   }
+  .entry-logo{
+    width: 60px !important;
+  }
 }
 
 @media (max-width:370px) {
