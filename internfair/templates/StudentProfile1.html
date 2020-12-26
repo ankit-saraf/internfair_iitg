@@ -251,12 +251,17 @@
                 </div>
                 <div class="col-6 text-left entry">
                     <small>STATUS</small><br>
+                    {% if intern.Internship.FormStatus == "ACTIVE" %}
                     {%if intern.Status == "SHORTLISTED" %}
                     <span class="info" style="color:green">{{ intern.Status}}</span>
                     {%else%}
-                    <span class="info" style="color:red">{{ intern.Status}}</span>
+                    <span class="info" style="color:blue">{{ intern.Status}}</span>
                     {% endif %}
+                    {%else%}
+                    <span class="info" style="color:red">REJECTED</span>
+                    {%endif%}
                 </div>
+
 
 
             </div>

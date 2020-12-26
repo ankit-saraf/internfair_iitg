@@ -63,7 +63,7 @@ class InternApplication(models.Model):
         # print(self.questions)
         ques = self.Internship.questions
         # print(ques)
-        ques_list = ques.split(',')
+        ques_list = ques.split('$$')
         # print(ques)
         print(ques)
         for q in ques_list:
