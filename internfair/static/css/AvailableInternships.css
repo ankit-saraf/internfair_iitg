@@ -30,6 +30,11 @@ body {
   border-bottom: 1px solid  #416EA8;
 }
 
+.dropdown-menu{
+  max-height: 60vh !important;
+  overflow: scroll !important;
+}
+
 .light-text {
   color: #6c757d !important;
 }
@@ -437,3 +442,19 @@ small{
   }
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #416EA8;
+  border-radius: 5px;
+}

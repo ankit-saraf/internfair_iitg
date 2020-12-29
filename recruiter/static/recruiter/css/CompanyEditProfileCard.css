@@ -282,3 +282,21 @@ button.uploadbtn{
 
 
       }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    
+    background-color: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:  #416EA8;
+    border-radius: 5px;
+  }

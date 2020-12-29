@@ -19,10 +19,22 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
-input:focus{
+
+input:focus {
     outline: none !important;
 }
 
+.footer {
+    bottom: 0 !important;
+    position: fixed;
+    width: 100vw;
+    background-color: #FFFFFF;
+    border-top: 1px  #416EA8 solid;
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    color: #000000 !important;
+}
 
 .brand {
     font-family: GT Walsheim Pro;
@@ -163,13 +175,16 @@ ul {
 }
 
 
+
+
 @media (max-width:1270px) and (min-width:751px) {
     .sideImg {
         width: 70vw;
         height: 50vw;
         top: -260px;
     }
-    .heading{
+
+    .heading {
         font-size: 35px;
     }
 }
@@ -184,10 +199,11 @@ ul {
     .menu-item {
         margin-bottom: 2vh;
     }
-    .heading{
+
+    .heading {
         font-size: 25px;
     }
-    
+
 }
 
 @media (max-width:750px) {
@@ -199,10 +215,29 @@ ul {
         right: 7px;
         height: 100%;
     }
-    .form{
-        width:100% !important;
+
+    .form {
+        width: 100% !important;
     }
-    .temp{
+
+    .temp {
         padding-left: 0 !important;
     }
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    
+    background-color: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:  #416EA8;
+    border-radius: 5px;
+  }

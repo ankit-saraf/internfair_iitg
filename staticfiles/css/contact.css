@@ -20,6 +20,18 @@ a:hover {
     cursor: pointer;
 }
 
+.footer {
+    bottom: 0 !important;
+    position: fixed;
+    width: 100vw;
+    background-color: #FFFFFF;
+    border-top: 1px  #416EA8 solid;
+    font-family: GT Walsheim Pro;
+    font-style: normal;
+    font-weight: 500;
+    color: #000000 !important;
+}
+
 .brand {
     font-family: GT Walsheim Pro;
     font-style: normal;
@@ -88,6 +100,10 @@ ul {
     margin-bottom: 10px;
     width:150px;
     height:150px;
+}
+
+.profilePic:hover{
+    border: lightseagreen 4px solid;
 }
 
 .font{
@@ -243,4 +259,23 @@ ul {
         width: 100px !important;
         height: 100px !important;
     }
+ 
+    
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    
+    background-color: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:  #416EA8;
+    border-radius: 5px;
+  }

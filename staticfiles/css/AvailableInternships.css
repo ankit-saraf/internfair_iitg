@@ -25,6 +25,16 @@ body {
   }
 }
 
+.startupName{
+  padding: 10px;
+  border-bottom: 1px solid  #416EA8;
+}
+
+.dropdown-menu{
+  max-height: 60vh !important;
+  overflow: scroll !important;
+}
+
 .light-text {
   color: #6c757d !important;
 }
@@ -366,6 +376,9 @@ small{
   .input {
     height: 40px;
   }
+  .entry-logo{
+    width: 60px !important;
+  }
 }
 
 @media (max-width:400px) {
@@ -379,6 +392,8 @@ small{
   .quesCard{
     top:75% !important;
   }
+
+
   
 }
 
@@ -387,6 +402,7 @@ small{
     color: #416EA8;
   }
 
+ 
   
 
   a.activo {
@@ -426,3 +442,19 @@ small{
   }
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  
+  background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #416EA8;
+  border-radius: 5px;
+}
