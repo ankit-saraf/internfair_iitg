@@ -152,11 +152,6 @@ button:hover{
 }
 
 
- @media (max-width: 1440px) and (min-width:985px){
-    body{
-        width: max-content;
-    }
-}
 
 @media (max-width:990px) {
 
