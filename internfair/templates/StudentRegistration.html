@@ -45,8 +45,10 @@
 
 
   <div class="head">
-    Student registration to participate in Intern Fair
+    Student registration to participate in Intern Fair<br>
+    <span style='font-size:16px; opacity:0.8; padding-top: 5px'>You must have UDGAM paas to register. <a href='#'>Buy one!</a></span>
   </div>
+
   <form  method='POST' action="{% url 'StudentRegistration' %}" id="student_form">
     {% csrf_token %}
     {% for field in form.visible_fields %}
