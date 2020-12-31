@@ -33,7 +33,7 @@ class StudentsForm(UserCreationForm):
     IITG_webmail = forms.EmailField(max_length=150,label='IITG Webmail')
     department = forms.CharField(max_length=50)
     contact= forms.IntegerField(validators=[MaxValueValidator(9999999999)],label='Contact No.')
-    Udgam_transaction_id = forms.CharField(max_length=20, min_length=20, label='Udgam paas payment id')
+    Udgam_transaction_id = forms.CharField(max_length=30,label='Udgam paas payment id')
 
     class Meta(UserCreationForm.Meta):
         model = User

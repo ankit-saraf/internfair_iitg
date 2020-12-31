@@ -43,15 +43,21 @@ class StudentRegistration(CreateView):
 
     def form_valid(self, form):
         givenemail = str(form.cleaned_data.get('IITG_webmail'))
+        givenid = str(form.cleaned_data.get('Udgam_transaction_id'))
         # print(givenemail)
         iitgmail = "iitg.ac.in"
+        trxn = "MOJO"
         if iitgmail in givenemail :
-            user = form.save()
-            login(self.request, user)
-            return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': user.id}))
+            if trxn in givenid and len(givenid)==20:
+                user = form.save()
+                login(self.request, user)
+                return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': user.id}))
+            else:
+                messages.info(self.request, 'Invalid Payment Id')
+                return redirect('StudentRegistration')
 
         else:
-            messages.info(self.request, 'Please Enter IITG webmail id only.')
+            messages.info(self.request, 'Please Enter IITG webmail only.')
             return redirect('StudentRegistration')
 
 

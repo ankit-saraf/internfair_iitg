@@ -81,6 +81,7 @@ def DeactivateForm(request,pk):
     startup_object = StartUps.objects.get(user=current_user)
     form = Intern_form.objects.get(pk = id)
     # print(form)
+    form.FormStatus = 'DEACTIVE'
     form.save()
     return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': request.user.id}))
 
