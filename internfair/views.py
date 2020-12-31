@@ -153,7 +153,7 @@ def AvailableInternships(request):
             Intern_email= student.email, Intern_contact= student.contact, Startup_name = internship.startup.companyName,
             Startup_profile= internship.profile, Answers=answers,CV = CV)
             # app = [student.name,startup,profile,internship,answers]
-            messages.success(request, f'You have successfully applied for internship in {startup} for  {profile} profile  ', '')
+            messages.success(request, f'You have successfully applied for internship in {internship.startup.companyName} for  {profile} profile  ', '')
         else:
             messages.error(request, 'You have already applied for 5 Internships. You cannot apply for more. ','')
 
