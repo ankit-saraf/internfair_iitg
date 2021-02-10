@@ -10,7 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<link rel="icon" href="{% static 'image/favicon.png' %}" >
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/studentprofile.css' %}">
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async></script>
   <title>Student Profile</title>
@@ -96,7 +96,7 @@
         <div class='text-center'>
           <h4 class="prof"> Edit Profile </h4>
         </div>
-        
+
         <div class='text-center'>
             <div class="profile-img-card"><svg data-jdenticon-value="user{{student.id}}" width="80" height="80"></svg></div>
 
@@ -150,7 +150,7 @@
 <!--    <ul class="messages">-->
         {% for message in messages %}
 <!--        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>-->
-          
+
          <div class="alert mx-auto alert-success">{{ message }} </div>
 <!--        </li>-->
         {% endfor %}
@@ -201,7 +201,7 @@
 <!--            class="img-fluid">-->
                     <img width="25" class='entry-logo' src="{{intern.Internship.startup.logo.url}}"></img>
 
-            
+
 
 <!--          <img class="img-fluid" src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="loading...">-->
         </div>
@@ -268,7 +268,7 @@
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom:30px">
                 <div class="col-12 text-center">
-                    <button type="button" onclick="openConfirmModal({{intern.id}})" class="cancel">Cancel Application</button>
+                    <button type="button" class="cancel" style="background-color: red" disabled>Cancellation Not Allowed</button>
                 </div>
             </div>
         </div>

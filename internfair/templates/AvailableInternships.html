@@ -9,7 +9,6 @@
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/AvailableInternships.css' %}">
-<link rel="icon" href="{% static 'image/favicon.png' %}" >
   <title>Available Internships</title>
 </head>
 
@@ -54,7 +53,7 @@
 
       <div class="col-md-5 pb-3  mx-5 pb-md-0 alert alert-warning" style="font-size: 1rem">
         Please note you can only apply to a maximum of 5 Internships. Don't apply to an internship multiple times.<br>
-        Tip: Apply smartly, as there are limited vacancies for each startup.
+        <span style="color:red">Applications are closed.</span>
       </div>
       <div class="col-md-4 d-flex mx-5 col-lg-4 flex-row-reverse align-items-start">
         <button class="btn btn-outline-primary">
@@ -167,7 +166,7 @@
           </div>
           <div class="row" style="padding-top: 10px; padding-bottom:30px">
             <div class="col-12 text-center">
-              <button type="button" onclick="openQuestionModal({{intern.id}})" class="apply">Apply</button>
+              <button type="button" class="apply" style="background-color: red">Application Closed</button>
             </div>
           </div>
         </div>
@@ -191,7 +190,7 @@
               <input type="hidden" name="startup" value='{{ intern.startup }}'>
               <input type="hidden" name="profile" value="{{ intern.profile }}">
               <input type="hidden" name="id" value="{{ intern.id }}">
-              <span class="">CV (Shareable Google Drive link) </span>
+              <span class="">Link to CV (<a href="https://docs.google.com/document/d/1L85vVa1wAue7HdsMQN8cly-bmy1ZFoaaUdnA4Sl-qv8/edit?usp=sharing" style="color: #416EA8" target="_blank">How to get a shareable link.</a>) </span>
               <input type="url" required name="CV" class="input"><br><br>
               {% for ques in intern.string_as_list  %}
               {% if ques != "" %}

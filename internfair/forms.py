@@ -12,7 +12,7 @@ class StartUpsForm(UserCreationForm):
     company_name = forms.CharField(max_length=100,label='Startup Name')
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username','email','POC','contact','company_name','password1', 'password2',)   
+        fields = ('username','email','POC','contact','company_name','password1', 'password2',)
 
     @transaction.atomic
     def save(self):
@@ -33,12 +33,12 @@ class StudentsForm(UserCreationForm):
     IITG_webmail = forms.EmailField(max_length=150,label='IITG Webmail')
     department = forms.CharField(max_length=50)
     contact= forms.IntegerField(validators=[MaxValueValidator(9999999999)],label='Contact No.')
-    Udgam_transaction_id = forms.CharField(max_length=30,label='Udgam paas payment id')
+    Udgam_transaction_id = forms.CharField(max_length=30,label='Udgam pass payment id')
 
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('name','username','IITG_webmail','roll_number','department','contact','Udgam_transaction_id','password1', 'password2',)
-    
+
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
@@ -61,4 +61,3 @@ class ApplicationForm(forms.Form):
 class LogoForm(forms.Form):
     logo = forms.ImageField()
 
-    

@@ -41,17 +41,24 @@ class StudentRegistration(CreateView):
         kwargs['user_type'] = 'student'
         return super().get_context_data(**kwargs)
 
+
+
     def form_valid(self, form):
         givenemail = str(form.cleaned_data.get('IITG_webmail'))
         givenid = str(form.cleaned_data.get('Udgam_transaction_id'))
+        roll_number = str(form.cleaned_data.get('roll_number'))
         # print(givenemail)
         iitgmail = "iitg.ac.in"
         trxn = "MOJO"
-        if iitgmail in givenemail :
-            if trxn in givenid and len(givenid)==20:
-                user = form.save()
-                login(self.request, user)
-                return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': user.id}))
+        if iitgmail.upper() in givenemail.upper() :
+            if trxn.upper() in givenid.upper() and len(givenid)==20:
+                if roll_number[:2]=='19' or roll_number[:2]=='20':
+                    user = form.save()
+                    login(self.request, user)
+                    return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': user.id}))
+                else:
+                    messages.info(self.request, 'Sorry, you are not eligible for Intern Fair')
+                    return redirect('StudentRegistration')
             else:
                 messages.info(self.request, 'Invalid Payment Id')
                 return redirect('StudentRegistration')
@@ -169,7 +176,7 @@ def AvailableInternships(request):
             y= x.startup.companyName
             if y not in startupName:
                 startupName.append(y)
-        
+
         template = "AvailableInternships.html"
         context = {'interns': available_internships, 'startupName': startupName}
         return render(request, template, context)

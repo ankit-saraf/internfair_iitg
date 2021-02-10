@@ -11,7 +11,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  <link rel="icon" href="{% static 'image/favicon.png' %}" >
   <link rel="stylesheet" href="{% static 'recruiter/css/theme_configure.css' %}" >
   <link rel="stylesheet" type="text/css" href="{% static 'recruiter/css/AvailableIntern.css' %}">
   <link rel="stylesheet" href="{% static 'recruiter/css/InternshipQuestionsCard.css' %}">
@@ -53,7 +52,7 @@
   <div class="container">
     <div class="row" style="margin-top: 6rem;">
       <div class="col-12 col-md-2 d-flex justify-content-center align-items-center">
-      <img src="{{startup.logo.url}}" width="80" height="80">
+      <img src="{{startup.logo.url}}" width="80">
       </div>
     <div class="col-md-4 pb-3 pb-md-0">
       <h1 id="company-name">{{startup.companyName}}</h1>
@@ -95,11 +94,11 @@
                     <div class="prelim mx-auto">
                      <div class="pb-3 pl-3 pt-2 mx-auto logoedit" style="max-width:30%;">
 <!--                        <img src="{% static 'image/p.png' %}" class="rounded-circle img-fluid" alt="">-->
-                            <img src="{{startup.logo.url}}" width="80" height="80">                     
+                            <img src="{{startup.logo.url}}" width="80">
                             <br><br><br>
                      </div>
                       <div class='row justify-content-center'>
-                      
+
                       <div class='col-7 text-center'>
                         <input type="file" accept="image/*" id="myFile" class='changelogoinput' name="startup_logo" style='max-width:100%;position:absolute; z-index:100; '>
                         <div style='width:100%;' class='changelogo submit'>Change Startup Logo</div>
@@ -124,7 +123,7 @@
                   <button type="button" class="btn btn-outline-primary " data-dismiss="modal" >No</button>
                 </div>
                 </form>
-  
+
               </div>
             </div>
           </div>

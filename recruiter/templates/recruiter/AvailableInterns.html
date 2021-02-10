@@ -17,7 +17,7 @@
         <b>NOTE:</b>
         <ul>
           <li>Summer break of first yearites: 5 weeks (From June 3rd week)</li>
-          <li>Summer break of second yearites: 3 months (From May)</li>          
+          <li>Summer break of second yearites: 3 months (From May)</li>
         </ul>
       </div>
     <div class="col-md-8 pb-4 ml-sm-5 pb-md-0 highlight">
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-    
+
 
   <div class="row d-none d-md-flex" id="table-head">
       <div class="col-md-auto profile-userpic padding"><img src="https://www.htmlcsscolor.com/preview/128x128/FFFFFF.png" class="img-fluid"></div>
@@ -59,7 +59,7 @@
 
               <div class="col-md-4 padding">{{ intern.Internship.profile }}</div>
               <div class="col-md-4 padding">{{ intern.Intern.department }}</div>
-          
+
         </div>
       </div>
     </div>
@@ -121,8 +121,10 @@
                 <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>First</p>
               {% elif  intern.Intern.roll_number|slice:":2" == "19" %}
                 <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Second</p>
+              {% elif  intern.Intern.roll_number|slice:":2" == "18" %}
+                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Third</p>
               {% endif %}
-              <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }} " style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
+              <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }} " target="_blank" style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
 
             <div class="pb-3 mx-2 ">
 

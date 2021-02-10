@@ -6,7 +6,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" href="{% static 'image/favicon.png' %}" >
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -25,7 +24,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse drop-menu" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="menu-item">
@@ -36,17 +35,17 @@
             </li>
           </ul>
           <a href="{% url 'StudentLogin' %}"><button class="RegisterBtn">Login</button></a>
-          
+
         </div>
       </nav>
-  
+
 
 
 
 
   <div class="head">
     Student registration to participate in Intern Fair<br>
-    <span style='font-size:16px; opacity:0.8; padding-top: 5px'>You must have UDGAM paas to register. <a target="_blank" href='https://imjo.in/3gaMXv'>Buy one!</a></span>
+    <span style='font-size:16px; opacity:0.8; padding-top: 5px'>You must have UDGAM pass to register. <a target="_blank" href='https://imjo.in/3gaMXv'>Buy one!</a></span>
   </div>
 
   <form  method='POST' action="{% url 'StudentRegistration' %}" id="student_form">
