@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'kfbcj)ilo6_ewd5n)yq^$6#g73=2v@#w!@&_s^jk47@3i3v5&&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 CORS_REPLACE_HTTPS_REFERER      = False
 HOST_SCHEME                     = "https://"
@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'internfair_iitg.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'internfair$default',
         'USER': 'internfair',
         'PASSWORD': 'if2021@UDGAM',

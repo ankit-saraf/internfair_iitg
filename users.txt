@@ -1,0 +1,4 @@
+superuser:
+	username : superuser
+	email : superuser@gmail.com
+	password : 123456789
