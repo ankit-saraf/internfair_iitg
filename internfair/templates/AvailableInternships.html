@@ -110,6 +110,7 @@
 
 
       <!-- First row -->
+      <div class ="internshipRowMaster">
       {% for intern in interns %}
       <div class="row p-2 p-md-0 top align-items-center internshipRow" id="{{intern.id}}"
         onclick="openApplyModal({{intern.id}})">
@@ -124,7 +125,7 @@
             <div class="col-md-3 padding td">{{ intern.stipend }}</div>
           </div>
         </div>
-      </div>
+    
 
       {% comment %} Apply to company modal {% endcomment %}
       <div class="applyToCompany" id="modal{{intern.id}}">
@@ -198,6 +199,7 @@
               <input type="text" name="answers" required class="input">
               {% endif %}
               <br><br>
+            </div>
               {% endfor %}
 
 
@@ -215,12 +217,16 @@
       </div>
 
       {% endfor %}
+      </div>
       <!-- Second row (Later will be shown with for loop)-->
 
     </div>
 
   </div>
 
+  <!-- <script src="lodashClonedeep"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> -->
+  <script src="{% static 'js/lodash.js' %}"></script>
 
   <script>
     function mySearch() {
@@ -273,6 +279,7 @@
 
     function openApplyModal(i) {
       var modal = document.getElementById("modal" + i);
+      console.log(i)
       modal.style.display = "block";
       window.onclick = function (event) {
         if (event.target == modal) {
