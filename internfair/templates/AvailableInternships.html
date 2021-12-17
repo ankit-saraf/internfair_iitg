@@ -95,7 +95,6 @@
 
     <div class="little-center-table" id="myTable">
 
-      <!-- Table column heading -->
       <div class="row d-none d-md-flex" id="table-head">
         <div class="col-md-auto profile-userpic padding">
           <img src="https://www.htmlcsscolor.com/preview/128x128/FFFFFF.png" class="img-fluid">
@@ -112,7 +111,6 @@
       </div>
 
 
-      <!-- First row -->
       <div class ="internshipRowMaster">
       {% for intern in interns %}
       <div class="row p-2 p-md-0 top align-items-center internshipRow" id="{{intern.id}}"
@@ -128,7 +126,7 @@
             <div class="col-md-3 padding td">{{ intern.stipend }}</div>
           </div>
         </div>
-    
+      
 
       {% comment %} Apply to company modal {% endcomment %}
       <div class="applyToCompany" id="modal{{intern.id}}">
@@ -221,7 +219,6 @@
 
       {% endfor %}
       </div>
-      <!-- Second row (Later will be shown with for loop)-->
 
     </div>
 
@@ -229,14 +226,7 @@
 
   <div class="container">
 
-    <table id="table" 
-           data-toggle="table"
-           data-search="true"
-           data-filter-control="true" 
-           data-show-export="false"
-           data-click-to-select="true"
-           data-toolbar="#toolbar"
-           class="table table-unbordered table-hover thead-dark ">
+    <table id="table" data-toggle="table"  data-search="true" data-filter-control="true" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar" class="table table-unbordered table-hover thead-dark ">
       <thead>
         <tr>
           <!-- <th data-field="state" data-checkbox="true"></th> -->
@@ -258,53 +248,53 @@
           <td>{{ intern.stipend }}</td>
 
           {% comment %} Apply to company modal {% endcomment %}
-      <div class="applyToCompany" id="modal{{intern.id}}">
-        <div class="applyCard" style="margin:auto;">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <img height="80" src="{{intern.startup.logo.url}}"></img>
+          <div class="applyToCompany" id="modal{{intern.id}}">
+          <div class="applyCard" style="margin:auto;">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <img height="80" src="{{intern.startup.logo.url}}"></img>
+              </div>
             </div>
-          </div>
-          <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
-            <div class="col-12 c-name">
-              {{ intern.startup.companyName }}
+            <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
+              <div class="col-12 c-name">
+                {{ intern.startup.companyName }}
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-6 text-left entry">
-              <small>PROFILE</small><br>
-              <span class="info">{{ intern.profile }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>ALLOWANCES</small><br>
-              <span class="info">{{ intern.allowances }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>LOCATION</small><br>
-              <span class="info">{{ intern.location }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>REMARKS</small><br>
-              <span class="info">{{ intern.remarks }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>STIPEND</small><br>
-              <span class="info">{{ intern.stipend}}</span>
-            </div>
+            <div class="row">
+              <div class="col-6 text-left entry">
+                <small>PROFILE</small><br>
+                <span class="info">{{ intern.profile }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>ALLOWANCES</small><br>
+                <span class="info">{{ intern.allowances }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>LOCATION</small><br>
+                <span class="info">{{ intern.location }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>REMARKS</small><br>
+                <span class="info">{{ intern.remarks }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>STIPEND</small><br>
+                <span class="info">{{ intern.stipend}}</span>
+              </div>
 
 
 
-          </div>
-          <div class="row" style="padding-top: 10px; padding-bottom:30px">
-            <div class="col-12 text-center">
-              <button type="button" class="apply" style="background-color: red">Application Closed</button>
+            </div>
+            <div class="row" style="padding-top: 10px; padding-bottom:30px">
+              <div class="col-12 text-center">
+                <button type="button" class="apply" style="background-color: red">Application Closed</button>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          </div>
 
-      <!-- Question Modal -->
-      <div class="questionModal" id="qModal{{intern.id}}">
+          <!-- Question Modal -->
+          <div class="questionModal" id="qModal{{intern.id}}">
         <div class="quesCard" style="margin:auto ; height:fit-content; top: 55%">
           <div style="padding: 5%;">
             <div style="text-align: center;">
@@ -343,19 +333,44 @@
             </form>
           </div>
 
-        </div>
-      </div>
+          </div>
         </tr>
         {% endfor %}
         <!-- Second row (Later will be shown with for loop)-->
       </tbody>
     </table>
-    </div>
+  </div>
   <!-- <script src="lodashClonedeep"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> -->
   <script src="{% static 'js/lodash.js' %}"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
   <script>
+
+    $('#table').bootstrapTable({
+    onClickRow: function (row, $element) {
+        // row: the record corresponding to the clicked row, 
+        // $element: the tr element.
+        console.log(row)
+       }
+    });
+
+    function clickedd(row){
+      console.log(row)
+    }
+
     function mySearch() {
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("mySearchTab");
@@ -446,21 +461,7 @@
   </script>
 
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
-  <script>
-  </script>
+
 </body>
 
 </html>
