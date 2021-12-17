@@ -53,7 +53,7 @@
 
       <div class="col-md-5 pb-3  mx-5 pb-md-0 alert alert-warning" style="font-size: 1rem">
         Please note you can only apply to a maximum of 5 Internships. Don't apply to an internship multiple times.<br>
-        <span style="color:red">Applications are closed.</span>
+        Tip: Apply smartly, as there are limited vacancies for each startup.
       </div>
       <div class="col-md-4 d-flex mx-5 col-lg-4 flex-row-reverse align-items-start">
         <button class="btn btn-outline-primary">
@@ -167,7 +167,7 @@
           </div>
           <div class="row" style="padding-top: 10px; padding-bottom:30px">
             <div class="col-12 text-center">
-              <button type="button" class="apply" style="background-color: red">Application Closed</button>
+              <button type="button" onclick="openQuestionModal({{intern.id}})" class="apply">Apply</button>
             </div>
           </div>
         </div>
@@ -199,19 +199,19 @@
               <input type="text" name="answers" required class="input">
               {% endif %}
               <br><br>
-            </div>
               {% endfor %}
-
-
-
+              
+              
+              
               <br>
               <div class="row align-items-center ">
                 <div class="col-5 text-right"><a class="back" onclick="backModal({{intern.id}})">Back</a></div>
-                <!--              <div class="col-7 text-left"><button class="Publish" onclick="submitApplication(1)">Submit</button></div>-->
-                <div class="col-7 text-left"><button class="Publish">Submit</button></div>
+                <div class="col-7 text-left"><button class="Publish" onclick="submitApplication(1)">Submit</button></div>
+                <!-- <div class="col-7 text-left"><button class="Publish">Submit</button></div> -->
               </div>
             </form>
           </div>
+        </div>
 
         </div>
       </div>
