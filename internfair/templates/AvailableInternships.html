@@ -120,7 +120,7 @@
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom:30px">
               <div class="col-12 text-center">
-                <button type="button" class="apply" style="background-color: red">Application Closed</button>
+                <button type="button" onclick="openQuestionModal({{intern.id}})" class="apply">Apply</button>
               </div>
             </div>
           </div>
@@ -152,11 +152,10 @@
               <input type="text" name="answers" required class="input">
               {% endif %}
               <br><br>
-            </div>
               {% endfor %}
-
-
-
+              
+              
+              
               <br>
               <div class="row align-items-center ">
                 <div class="col-5 text-right"><a class="back" onclick="backModal({{intern.id}})">Back</a></div>
@@ -165,6 +164,7 @@
               </div>
             </form>
           </div>
+        </div>
 
           </div>
         </tr>
