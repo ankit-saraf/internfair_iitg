@@ -11,6 +11,12 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.core.mail import send_mail
+import secrets
+import string
+
 # Create your views here.
 
 def index(request):
@@ -198,10 +204,6 @@ def EditStudProfile(request, **kwargs):
 
 
 
-
-
-
-
 @login_required
 def logout_view(request):
     logout(request)
@@ -223,7 +225,40 @@ def delete_app(request,**kwargs):
 
     return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': student.id}))
 
+@login_required
+def changePassword(request,**kwargs):
+    current_user = request.user
+    student = Students.objects.get(user=current_user)
+    password = request.POST.get('password')
+    student.user.set_password(str(password))
+    student.user.save()
+    return HttpResponseRedirect(reverse('StudentProfile',kwargs={'pk': current_user.id}))
 
+
+def forgotPassword(request):
+    return render(request, "ForgotPassword.html")
+
+def sendPassword(request):
+    if request.method == 'POST':
+        emailID = request.POST.get('emailID')
+        student = Students.objects.get(email=emailID)
+        if student:
+            if student.user.is_student:
+                N = 10
+                password = ''.join(secrets.choice(string.ascii_uppercase + string.digits)
+                                                                for i in range(N))
+                print("The generated random password : " + str(password))
+                subject = "vdds"
+                message = "The generated random password : " + str(password)
+                student.user.set_password(str(password))
+                student.user.save()
+                email_from = settings.EMAIL_HOST_USER
+                send_mail(subject,message,email_from,[emailID],fail_silently=False)
+                
+    return redirect('StudentLogin')
+
+def sentPassword(request):
+    return render(request, "sentPassword.html")
 
 def intern_app_count(student):
     count = InternApplication.objects.filter(Intern__id= student.id).count()
