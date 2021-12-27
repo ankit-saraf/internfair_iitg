@@ -67,6 +67,7 @@
 
 
         <a href="#" style="color: #416EA8; font-size: .75rem;" onclick="openEditModal()">Edit Profile</a>
+        <a href="#" style="color: #416EA8; font-size: .75rem; margin-left: 10px;" onclick="openPasswordModal()">Change Password</a>
       </div>
 
         <div class="col-md-2 col-lg-4 bg-white rounded-lg p-3 ">
@@ -138,6 +139,41 @@
         </form><!-- /form -->
 
       </div><!-- /card-container -->
+    </div>
+    
+    <!-- Modal for change password -->
+    <div class="editProfileModal " id="UpdatePasswordModal">
+      <div class="Editcard ">
+      <div class="card login-form">
+        <div class="card-body">
+          <h3 class="card-title text-center">Change password</h3>
+          
+          <!--Password must contain one lowercase letter, one number, and be at least 7 characters long.-->
+          
+          <div class="card-text">
+            <form method="POST" action="{% url 'changePassword' student.id%}">
+              {% csrf_token %}
+              <!-- <form> -->
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <a class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </a>
+      </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1" >Your new password</label>
+                <input type="password" class="form-control form-control-sm" name="password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Repeat password</label>
+                <input type="password" class="form-control form-control-sm" >
+              </div>
+              <button type="submit" class="btn btn-primary btn-block submit-btn">Confirm</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
     <!-- List of registered internships  -->
@@ -255,11 +291,11 @@
                     {% if intern.Internship.FormStatus == "ACTIVE" %}
                     {%if intern.Status == "SHORTLISTED" %}
                     <span class="info" style="color:green">{{ intern.Status}}</span>
+                    {%elif intern.Status == "REJECTED"%}
+                    <span class="info" style="color:red">{{ intern.Status}}</span>
                     {%else%}
                     <span class="info" style="color:blue">{{ intern.Status}}</span>
                     {% endif %}
-                    {%else%}
-                    <span class="info" style="color:red">REJECTED</span>
                     {%endif%}
                 </div>
 
@@ -268,7 +304,7 @@
             </div>
             <div class="row" style="padding-top: 10px; padding-bottom:30px">
                 <div class="col-12 text-center">
-                    <button type="button" class="cancel" style="background-color: red" disabled>Cancellation Not Allowed</button>
+                  <button type="button" onclick="openConfirmModal({{intern.id}})" class="cancel">Cancel Application</button>
                 </div>
             </div>
         </div>
@@ -284,7 +320,7 @@
                 <img width="50" height="50" src="{{intern.Internship.startup.logo.url}}"></img>
                 <p class="m-0">Are you sure that you want to cancel your application for internship in</p>
                 <p id="company">{{ intern.Internship.startup }}</p>
-                <a href="{% url 'delete_app' intern.id %}" class="btn btn-custom py-1 px-3" onclick="cancelApplication({{intern.id}})">Yes</a>
+                <a href="{% url 'delete_app' intern.id %}" class="btn btn-custom py-1 px-3" onclick="cancelApplication('{{intern.id}}')">Yes</a>
                 <a href="#" class="btn py-1 px-3" style="color: #416EA8; text-decoration: underline; outline: none;"
                   onclick="backModal({{intern.id}})">No</a>
               </div>
@@ -384,6 +420,16 @@ $(document).ready(function() {
 <script>
 	 function openEditModal() {
     var modal = document.getElementById("editProfileModal");
+    modal.style.display = "block";
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  }
+
+  function openPasswordModal() {
+    var modal = document.getElementById("UpdatePasswordModal");
     modal.style.display = "block";
     window.onclick = function (event) {
       if (event.target == modal) {

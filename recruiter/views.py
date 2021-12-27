@@ -59,6 +59,25 @@ def ShortlistedInterns(request,**kwargs):
     else:
         return redirect('recruiter:RecruiterLanding')
 
+@login_required(login_url='/recruiter')
+def RejectedInterns(request,**kwargs):
+    if request.user.is_authenticated:
+        startup_object = StartUps.objects.get(user=request.user)
+        AllApplications = InternApplication.objects.filter(Internship__startup=startup_object)
+        Applications = AllApplications.filter(Status='REJECTED')
+        template = "recruiter/RejectedInterns.html"
+        if kwargs:
+
+            pk = kwargs['pk']
+            # print(pk)
+            intern = AllApplications.get(id = pk)
+
+            intern.Status = 'REJECTED'
+            intern.save()
+
+        return render(request, template,{'startup': startup_object, 'app': Applications})
+    else:
+        return redirect('recruiter:RecruiterLanding')
 
 def add_profiles(request):
     template = "recruiter/AvailableInterns.html"
@@ -101,8 +120,6 @@ def EditStartupProfile(request, **kwargs):
             startup.location = request.POST['location']
         startup.save()
     return HttpResponseRedirect(reverse('recruiter:Profile',kwargs={'pk': current_user.id}))
-
-
 
 
 

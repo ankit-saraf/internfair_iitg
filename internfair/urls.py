@@ -19,4 +19,8 @@ urlpatterns = [
     path('student/login', views.studentLogin, name='StudentLogin'),
     path('student/logout', views.logout_view, name='StudentLogout'),
     path('contact/', views.contact, name='contact'),
+    path('forgotPassword/', views.forgotPassword, name='forgotPassword'),
+    path('send-password/', views.sendPassword, name='sendPassword'),
+    path(r'^student/password/change/(?P<pk>\d+)/$', views.changePassword, name='changePassword'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

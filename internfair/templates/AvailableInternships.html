@@ -5,6 +5,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.0.1" async></script>
@@ -53,127 +56,78 @@
 
       <div class="col-md-5 pb-3  mx-5 pb-md-0 alert alert-warning" style="font-size: 1rem">
         Please note you can only apply to a maximum of 5 Internships. Don't apply to an internship multiple times.<br>
-        <span style="color:red">Applications are closed.</span>
-      </div>
-      <div class="col-md-4 d-flex mx-5 col-lg-4 flex-row-reverse align-items-start">
-        <button class="btn btn-outline-primary">
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-              d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-            <path fill-rule="evenodd"
-              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
-          </svg>
-        </button>
-        <input class="form-control form-control-dark w-50 w-lg-50" type="text" id="mySearchTab" onkeyup="mySearch()"
-          placeholder="Search" aria-label="Search">
-
+        Tip: Apply smartly, as there are limited vacancies for each startup.
       </div>
     </div>
-    <br>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" style="background-color: #416EA8" type="button"
-        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Filter by StartUp
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {%for startup in startupName%}
-        <div class='startupName dropdown-item' onclick="showRow('{{startup}}')">
-          <div>{{startup}}</div>
-        </div>
-        {%endfor%}
-      </div>
-    </div>
-    <div class='row justify-content-center'>
+    <table id="table" data-toggle="table"  data-search="true" data-pagination="true" data-filter-control="true" data-show-export="false" data-click-to-select="true" data-toolbar="#toolbar" class="table table-hover">
+      <thead>
+        <tr>
+          <!-- <th data-field="state" data-checkbox="true"></th> -->
+          <th data-field="image"></th>
+          <th data-field="prenom" data-sortable="true">NAME</th>
+          <th data-field="date" data-sortable="true">PROFILE</th>
+          <th data-field="examen" data-sortable="true">LOCATION</th>
+          <th data-field="note" data-sortable="true">STIPEND</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- First row -->
+        {% for intern in interns %}
+        <tr class='internshipRow' id="{{intern.id}}" onclick="openApplyModal('{{intern.id}}')">
+          <td><img width="30" class='entry-logo' src="{{intern.startup.logo.url}}"></img></td>
+          <td>{{ intern.startup.companyName }}</td>
+          <td>{{ intern.profile }}</td>
+          <td>{{ intern.location }}</td>
+          <td>{{ intern.stipend }}</td>
+
+          {% comment %} Apply to company modal {% endcomment %}
+          <div class="applyToCompany" id="modal{{intern.id}}">
+          <div class="applyCard" style="margin:auto;">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <img height="80" src="{{intern.startup.logo.url}}"></img>
+              </div>
+            </div>
+            <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
+              <div class="col-12 c-name">
+                {{ intern.startup.companyName }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 text-left entry">
+                <small>PROFILE</small><br>
+                <span class="info">{{ intern.profile }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>ALLOWANCES</small><br>
+                <span class="info">{{ intern.allowances }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>LOCATION</small><br>
+                <span class="info">{{ intern.location }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>REMARKS</small><br>
+                <span class="info">{{ intern.remarks }}</span>
+              </div>
+              <div class="col-6 text-left entry">
+                <small>STIPEND</small><br>
+                <span class="info">{{ intern.stipend}}</span>
+              </div>
 
 
-    </div>
-    <br><br>
 
-    <div class="little-center-table" id="myTable">
-
-      <!-- Table column heading -->
-      <div class="row d-none d-md-flex" id="table-head">
-        <div class="col-md-auto profile-userpic padding">
-          <img src="https://www.htmlcsscolor.com/preview/128x128/FFFFFF.png" class="img-fluid">
-        </div>
-        <div class="col-md">
-          <div class="row light-text">
-            <div class="col padding">NAME</div>
-            <div class="col padding">PROFILE</div>
-            <div class="col padding">LOCATION</div>
-            <div class="col padding">STIPEND</div>
-          </div>
-
-        </div>
-      </div>
-
-
-      <!-- First row -->
-      {% for intern in interns %}
-      <div class="row p-2 p-md-0 top align-items-center internshipRow" id="{{intern.id}}"
-        onclick="openApplyModal({{intern.id}})">
-        <div class="col-3 col-md-auto  padding p-0 mx-3 m-md-0">
-          <img width="30" class='entry-logo' src="{{intern.startup.logo.url}}"></img>
-        </div>
-        <div class="col-auto col-md p-0 px-md-3">
-          <div class="row flex-column flex-md-row  justify-content-center " style="height: 100%;">
-            <div class="col-md-3 padding td"> {{ intern.startup.companyName }}</div>
-            <div class="col-md-3 padding td">{{ intern.profile }}</div>
-            <div class="col-md-3 padding td">{{ intern.location }}</div>
-            <div class="col-md-3 padding td">{{ intern.stipend }}</div>
-          </div>
-        </div>
-      </div>
-
-      {% comment %} Apply to company modal {% endcomment %}
-      <div class="applyToCompany" id="modal{{intern.id}}">
-        <div class="applyCard" style="margin:auto;">
-          <div class="row justify-content-center">
-            <div class="col-12">
-              <img height="80" src="{{intern.startup.logo.url}}"></img>
+            </div>
+            <div class="row" style="padding-top: 10px; padding-bottom:30px">
+              <div class="col-12 text-center">
+                <button type="button" onclick="openQuestionModal({{intern.id}})" class="apply">Apply</button>
+              </div>
             </div>
           </div>
-          <div class="row" style="padding-top: 10px; padding-bottom: 3px;">
-            <div class="col-12 c-name">
-              {{ intern.startup.companyName }}
-            </div>
           </div>
-          <div class="row">
-            <div class="col-6 text-left entry">
-              <small>PROFILE</small><br>
-              <span class="info">{{ intern.profile }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>ALLOWANCES</small><br>
-              <span class="info">{{ intern.allowances }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>LOCATION</small><br>
-              <span class="info">{{ intern.location }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>REMARKS</small><br>
-              <span class="info">{{ intern.remarks }}</span>
-            </div>
-            <div class="col-6 text-left entry">
-              <small>STIPEND</small><br>
-              <span class="info">{{ intern.stipend}}</span>
-            </div>
 
-
-
-          </div>
-          <div class="row" style="padding-top: 10px; padding-bottom:30px">
-            <div class="col-12 text-center">
-              <button type="button" class="apply" style="background-color: red">Application Closed</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question Modal -->
-      <div class="questionModal" id="qModal{{intern.id}}">
+          <!-- Question Modal -->
+          <div class="questionModal" id="qModal{{intern.id}}">
         <div class="quesCard" style="margin:auto ; height:fit-content; top: 55%">
           <div style="padding: 5%;">
             <div style="text-align: center;">
@@ -199,9 +153,9 @@
               {% endif %}
               <br><br>
               {% endfor %}
-
-
-
+              
+              
+              
               <br>
               <div class="row align-items-center ">
                 <div class="col-5 text-right"><a class="back" onclick="backModal({{intern.id}})">Back</a></div>
@@ -210,19 +164,48 @@
               </div>
             </form>
           </div>
-
         </div>
-      </div>
 
-      {% endfor %}
-      <!-- Second row (Later will be shown with for loop)-->
-
-    </div>
-
+          </div>
+        </tr>
+        {% endfor %}
+        <!-- Second row (Later will be shown with for loop)-->
+      </tbody>
+    </table>
   </div>
 
-
+  <!-- <script src="lodashClonedeep"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script> -->
+  <script src="{% static 'js/lodash.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
   <script>
+
+    $('#table').bootstrapTable({
+    onClickRow: function (row, $element) {
+        // row: the record corresponding to the clicked row, 
+        // $element: the tr element.
+        var id = row._id
+        openApplyModal(id)
+       }
+    });
+
+    function clickedd(row){
+      console.log(row)
+    }
+
     function mySearch() {
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("mySearchTab");
@@ -273,6 +256,7 @@
 
     function openApplyModal(i) {
       var modal = document.getElementById("modal" + i);
+      console.log(i)
       modal.style.display = "block";
       window.onclick = function (event) {
         if (event.target == modal) {
@@ -311,16 +295,6 @@
     }
   </script>
 
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-  </script>
 
 
 </body>

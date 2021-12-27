@@ -22,7 +22,8 @@
       </div>
     <div class="col-md-8 pb-4 ml-sm-5 pb-md-0 highlight">
       <a  href="#" >Available Interns |</a>
-      <a class=" light-text"   href="{% url 'recruiter:shortlistedInterns' %}" >Shortlisted Interns</a>
+      <a class=" light-text"   href="{% url 'recruiter:shortlistedInterns' %}" >Shortlisted Interns |</a>
+      <a class=" light-text"   href="{% url 'recruiter:rejectedInterns' %}" > Rejected Interns</a>
     </div>
   </div>
 
@@ -84,8 +85,8 @@
 
           <div class="pb-1 mx-1 ">
 
-                <a href='#model{{ intern.id }}' class='btn mx-2 px-5 my-2 btn-outline-primary border-lg ' data-toggle='modal' data-dismiss="modal" >View profile</a>
-                <a href="{% url 'recruiter:shortlistedInterns' intern.id %}" class='btn mx-2 px-5 my-2 btn-primary border-lg '>Shortlist</a>
+                <a href='#model{{ intern.id }}' class='btn mx-2 px-5 my-2 btn-outline-primary border-lg ' data-toggle='modal' data-dismiss="modal">Go Back</a>
+                <!-- <a href="{% url 'recruiter:shortlistedInterns' intern.id %}" class='btn mx-2 px-5 my-2 btn-primary border-lg '>Shortlist</a> -->
 
           </div>
 
@@ -107,7 +108,7 @@
           <div class="modal-body">
 
 
-              <div class="pb-3 pt-2 mx-auto" style="max-width:30%;">
+              <div class="pb-3 pt-2 mx-auto" style="display:flex;justify-content: center;">
 <!--                <img src="{% static 'image/test_image_ecell.jpg' %}" class="rounded-circle img-fluid" alt="">-->
                <svg data-jdenticon-value="user127{{intern.id }}" width="80" height="80"></svg>
 
@@ -118,19 +119,23 @@
               <p><h7 style="color:#416EA8!important;">ROLL NO.</h7><br>{{ intern.Intern.roll_number }}</p>
 
               {% if intern.Intern.roll_number|slice:":2" == "20" %}
-                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>First</p>
-              {% elif  intern.Intern.roll_number|slice:":2" == "19" %}
                 <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Second</p>
-              {% elif  intern.Intern.roll_number|slice:":2" == "18" %}
+              {% elif  intern.Intern.roll_number|slice:":2" == "19" %}
                 <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Third</p>
+              {% elif  intern.Intern.roll_number|slice:":2" == "21" %}
+                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>First</p>
+              {% elif  intern.Intern.roll_number|slice:":2" == "18" %}
+                <p><h7 style="color:#416EA8!important;">YEAR OF STUDY</h7><br>Fourth</p>
               {% endif %}
-              <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }} " target="_blank" style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
+              <p><h7 style="color:#416EA8!important;">CV</h7><br><a href="{{ intern.CV }}" target="_blank" style='border: 1px solid #416EA8; padding: 4px; border-radius:3px' >Student CV</a></p>
 
             <div class="pb-3 mx-2 ">
 
-                <a href='#model2{{ intern.id }}' class= 'btn px-3 mx-3 my-2 btn-outline-primary border-lg' data-dismiss='modal' data-toggle="modal">View Answers to form</a>
-                <a href="{% url 'recruiter:shortlistedInterns' intern.id %}" class='btn  mx-3 px-5 my-2 btn-primary border-lg '>Shortlist</a>
-
+                <a href='#model2{{ intern.id }}' class= 'btn px-3 mx-3 my-2 btn-outline-primary border-lg' data-dismiss='modal' data-toggle="modal" style="width:95%">View Answers to form</a>
+              <div style="display: flex; justify-content: space-between;">
+                <a href="{% url 'recruiter:rejectedInterns' intern.id %}" class='btn  mx-3 px-5 my-2 btn-primary border-lg ' style="background-color:red !important; width: 40%;">Reject</a>
+                <a href="{% url 'recruiter:shortlistedInterns' intern.id %}" class='btn  mx-3 px-5 my-2 btn-primary border-lg ' style="margin-right: 0; width: 40%;">Shortlist</a>
+              </div>
             </div>
 
           </div>

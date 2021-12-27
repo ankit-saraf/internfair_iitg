@@ -80,3 +80,10 @@ class InternApplication(models.Model):
             return True
         else:
             return False
+
+    def if_rejected(self):
+        if self.Status == 'REJECTED':
+            print(self.Status, 'SED')
+            return True
+        else:
+            return False
