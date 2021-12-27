@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import environ
+
+# loading env file and its variables 
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -161,5 +166,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "email@gmail.com"
-EMAIL_HOST_PASSWORD = "app password"
+EMAIL_HOST_USER = env('emailID')
+EMAIL_HOST_PASSWORD = env('appPassword')
